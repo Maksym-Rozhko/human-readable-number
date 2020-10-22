@@ -8,26 +8,29 @@ const NUMBERS = {
 };
 
 module.exports = function toReadable (number) {
-    if (number === 0) {
-        return 'zero';
-    };
+if (number === 0) {
+    return 'zero';
+}
 
-    let result = '';
+let result = '';
 
-    if (number >= 100) {
-        result += NUMBERS[Math.floor(number / 100)] + 'hundred';
-    }
 
-    if (number % 100 > 0) {
-        if (number % 100 <= 20) {
-            result += NUMBERS[number % 100];
-        } else {
-            result += NUMBERS[Math.floor(number % 100 / 10) * 10] + ' ';
+if (number >= 100) {
+    result += NUMBERS[Math.floor(number / 100)] + ' hundred ';
+    console.log(NUMBERS[Math.floor(number / 100)]);
+}
 
-            if (number % 10 > 0) {
-                result += NUMBERS[number % 10];
-            }
+if (number % 100 > 0) {
+    if (number % 100 <= 20){
+        result += NUMBERS[number % 100];
+    } else {
+        result += NUMBERS[Math.floor(number % 100 / 10) * 10] + ' ';
+
+        if (number % 10 > 0) {
+            result += NUMBERS[number % 10];
         }
     }
-    return result.trim();
+}
+
+return result.trim();
 }
